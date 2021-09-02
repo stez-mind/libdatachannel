@@ -77,6 +77,8 @@ struct RTC_CPP_EXPORT Configuration {
 	std::vector<IceServer> iceServers;
 	optional<ProxyServer> proxyServer; // libnice only
 	optional<string> bindAddress;      // libjuice only, default any
+    optional<int> failure_timeout_ms;  // libjuice only, default 30000
+    optional<int> max_stun_retransmission_count; // libjuice only, default 5
 
 	// Options
 	CertificateType certificateType = CertificateType::Default;

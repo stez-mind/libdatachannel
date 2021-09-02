@@ -92,6 +92,8 @@ IceTransport::IceTransport(const Configuration &config, candidate_callback candi
 	jconfig.cb_gathering_done = IceTransport::GatheringDoneCallback;
 	jconfig.cb_recv = IceTransport::RecvCallback;
 	jconfig.user_ptr = this;
+    jconfig.failure_timeout_ms = config.failure_timeout_ms.value_or(30000);
+    jconfig.max_stun_retransmission_count = config.max_stun_retransmission_count.value_or(5);
 
 	// Randomize servers order
 	std::vector<IceServer> servers = config.iceServers;
